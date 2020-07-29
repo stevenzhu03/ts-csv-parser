@@ -1,5 +1,8 @@
 import fs from "fs";
 
+//T is common practice for generic types
+//makes CSVFileReader reusable because structure of row can be passed in
+//depending on the CSV file
 export abstract class CSVFileReader<T> {
   data: T[] = [];
 
