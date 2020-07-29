@@ -2,8 +2,10 @@ import { CSVFileReader } from "./CSVFileReader";
 import { dateStringToDate } from "./utils";
 import { MatchResult } from "./MatchResult";
 
+//structure of the row in CSV file after modify all types from string
 type MatchData = [Date, string, string, number, number, MatchResult, string];
 
+//passing MatchData types defined above as argument to class (generics)
 export class MatchReader extends CSVFileReader<MatchData> {
   mapRow(row: string[]): MatchData {
     return [

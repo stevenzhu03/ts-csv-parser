@@ -16,6 +16,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MatchReader = void 0;
 var CSVFileReader_1 = require("./CSVFileReader");
 var utils_1 = require("./utils");
+//passing MatchData types defined above as argument to class (generics)
 var MatchReader = /** @class */ (function (_super) {
     __extends(MatchReader, _super);
     function MatchReader() {
