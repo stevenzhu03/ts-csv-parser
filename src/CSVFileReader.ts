@@ -8,6 +8,7 @@ export abstract class CSVFileReader<T> {
 
   constructor(public filename: string) {}
 
+  //abstract method to allow any row type strcture
   abstract mapRow(row: string[]): T;
 
   read(): void {
