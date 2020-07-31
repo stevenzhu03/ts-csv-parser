@@ -1,7 +1,13 @@
 import { MatchReader } from "./MatchReader";
+import { CSVFileReader } from "./CSVFileReader";
 
-const reader = new MatchReader("football.csv");
-reader.read();
+//Create an object that satifies the DataReader interface
+const csvFileReader = new CSVFileReader("football.csv");
+
+//Create new instance of MatchReader and pass in something that satisfies the
+//"DataReader" interface
+//Allows for customization of where MatchReader gets its information from
+const matchReader = new MatchReader(csvFileReader);
 
 // enum - enumeration
 // set of very closely related values
