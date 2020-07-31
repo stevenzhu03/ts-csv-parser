@@ -1,5 +1,4 @@
 import { MatchReader } from "./MatchReader";
-import { MatchResult } from "./MatchResult";
 
 const reader = new MatchReader("football.csv");
 reader.read();

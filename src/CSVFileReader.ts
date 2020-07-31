@@ -1,15 +1,13 @@
 import fs from "fs";
+import { dateStringToDate } from "./utils";
+import { MatchResult } from "./MatchResult";
 
-//T is common practice for generic types
-//makes CSVFileReader reusable because structure of row can be passed in
-//depending on the CSV file
-export abstract class CSVFileReader<T> {
-  data: T[] = [];
+type MatchData = [Date, string, string, number, number, MatchResult, string];
+
+export class CSVFileReader {
+  data: MatchData[] = [];
 
   constructor(public filename: string) {}
-
-  //abstract method to allow any row type strcture
-  abstract mapRow(row: string[]): T;
 
   read(): void {
     this.data = fs
@@ -20,6 +18,18 @@ export abstract class CSVFileReader<T> {
       .map((row: string): string[] => {
         return row.split(",");
       })
-      .map(this.mapRow);
+      .map(
+        (row: string[]): MatchData => {
+          return [
+            dateStringToDate(row[0]),
+            row[1],
+            row[2],
+            parseInt(row[3]),
+            parseInt(row[4]),
+            row[5] as MatchResult, // "H", "A", "D"
+            row[6],
+          ];
+        }
+      );
   }
 }
