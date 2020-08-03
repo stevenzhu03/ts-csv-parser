@@ -8,6 +8,7 @@ const csvFileReader = new CSVFileReader("football.csv");
 //"DataReader" interface
 //Allows for customization of where MatchReader gets its information from
 const matchReader = new MatchReader(csvFileReader);
+matchReader.load();
 
 // enum - enumeration
 // set of very closely related values
@@ -18,7 +19,7 @@ const matchReader = new MatchReader(csvFileReader);
 
 let manUnitedWins = 0;
 
-for (let match of reader.data) {
+for (let match of matchReader.matches) {
   if (match[1] === "Man United" && match[5] === "H") {
     manUnitedWins++;
   } else if (match[2] === "Man United" && match[5] === "A") {

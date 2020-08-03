@@ -13,6 +13,7 @@ export class MatchReader {
 
   constructor(public reader: DataReader) {}
 
+  //method that converts data into preferred data format
   load(): void {
     this.reader.read();
     this.matches = this.reader.data.map(
