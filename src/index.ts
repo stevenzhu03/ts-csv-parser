@@ -1,5 +1,8 @@
 import { MatchReader } from "./MatchReader";
 import { CSVFileReader } from "./CSVFileReader";
+import { WinsAnalysis } from "./analyzers/WinsAnalysis";
+import { ConsoleReport } from "./reportTargets/ConsoleReport";
+import { Summary } from "./Summary";
 
 //Create an object that satifies the DataReader interface
 const csvFileReader = new CSVFileReader("football.csv");
@@ -17,14 +20,9 @@ matchReader.load();
 // primary goal is to signal to other engineers that theses are closely related values
 // use whenever we have smalled fixed set of values that are closely realted and known at compile time
 
-let manUnitedWins = 0;
+const summary = new Summary(
+  new WinsAnalysis("Man United"),
+  new ConsoleReport()
+);
 
-for (let match of matchReader.matches) {
-  if (match[1] === "Man United" && match[5] === "H") {
-    manUnitedWins++;
-  } else if (match[2] === "Man United" && match[5] === "A") {
-    manUnitedWins++;
-  }
-}
-
-console.log(`Man United won ${manUnitedWins} games`);
+summary.buildAndPrintReport(matchReader.matches);

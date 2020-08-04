@@ -1,7 +1,9 @@
 import { dateStringToDate } from "./utils";
 import { MatchResult } from "./MatchResult";
+import { MatchData } from "./MatchData";
 
-type MatchData = [Date, string, string, number, number, MatchResult, string];
+//This uses a composition approach
+//Composition follows a "HAS A" realtionship between two classes
 
 interface DataReader {
   read(): void;

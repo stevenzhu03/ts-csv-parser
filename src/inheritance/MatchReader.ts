@@ -2,6 +2,9 @@ import { CSVFileReader } from "./CSVFileReader";
 import { dateStringToDate } from "./utils";
 import { MatchResult } from "./MatchResult";
 
+//This utilizes an inheritance approach to solving the problem
+//Inheritance follows an "IS A" relationship between the two classes
+
 //structure of the row in CSV file after modify all types from string
 type MatchData = [Date, string, string, number, number, MatchResult, string];
 
